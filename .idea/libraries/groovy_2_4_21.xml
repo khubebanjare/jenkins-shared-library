@@ -1,0 +1,50 @@
+<component name="libraryTable">
+  <library name="groovy-2.4.21">
+    <CLASSES>
+      <root url="jar:///usr/share/groovy/lib/groovy-console.jar!/" />
+      <root url="jar:///usr/share/groovy/lib/groovy-jsr223.jar!/" />
+      <root url="jar:///usr/share/groovy/lib/groovy-swing.jar!/" />
+      <root url="jar:///usr/share/groovy/lib/ant-junit.jar!/" />
+      <root url="jar:///usr/share/groovy/lib/asm-commons.jar!/" />
+      <root url="jar:///usr/share/groovy/lib/groovy-groovysh.jar!/" />
+      <root url="jar:///usr/share/groovy/lib/groovy-docgenerator.jar!/" />
+      <root url="jar:///usr/share/groovy/lib/commons-logging.jar!/" />
+      <root url="jar:///usr/share/groovy/lib/groovy-ant.jar!/" />
+      <root url="jar:///usr/share/groovy/lib/hamcrest-core.jar!/" />
+      <root url="jar:///usr/share/groovy/lib/jansi.jar!/" />
+      <root url="jar:///usr/share/groovy/lib/junit4.jar!/" />
+      <root url="jar:///usr/share/groovy/lib/groovy-json.jar!/" />
+      <root url="jar:///usr/share/groovy/lib/bsf.jar!/" />
+      <root url="jar:///usr/share/groovy/lib/jsp-api.jar!/" />
+      <root url="jar:///usr/share/groovy/lib/jline2.jar!/" />
+      <root url="jar:///usr/share/groovy/lib/jcommander.jar!/" />
+      <root url="jar:///usr/share/groovy/lib/groovy-test.jar!/" />
+      <root url="jar:///usr/share/groovy/lib/groovy-2.4.21.jar!/" />
+      <root url="jar:///usr/share/groovy/lib/gpars.jar!/" />
+      <root url="jar:///usr/share/groovy/lib/ant.jar!/" />
+      <root url="jar:///usr/share/groovy/lib/groovy-jmx.jar!/" />
+      <root url="jar:///usr/share/groovy/lib/groovy-sql.jar!/" />
+      <root url="jar:///usr/share/groovy/lib/commons-cli.jar!/" />
+      <root url="jar:///usr/share/groovy/lib/antlr.jar!/" />
+      <root url="jar:///usr/share/groovy/lib/groovy-bsf.jar!/" />
+      <root url="jar:///usr/share/groovy/lib/xstream.jar!/" />
+      <root url="jar:///usr/share/groovy/lib/groovy-xml.jar!/" />
+      <root url="jar:///usr/share/groovy/lib/asm-tree.jar!/" />
+      <root url="jar:///usr/share/groovy/lib/asm-analysis.jar!/" />
+      <root url="jar:///usr/share/groovy/lib/ant-antlr.jar!/" />
+      <root url="jar:///usr/share/groovy/lib/groovy-templates.jar!/" />
+      <root url="jar:///usr/share/groovy/lib/asm-util.jar!/" />
+      <root url="jar:///usr/share/groovy/lib/groovy-testng.jar!/" />
+      <root url="jar:///usr/share/groovy/lib/qdox.jar!/" />
+      <root url="jar:///usr/share/groovy/lib/groovy-nio.jar!/" />
+      <root url="jar:///usr/share/groovy/lib/groovy-servlet.jar!/" />
+      <root url="jar:///usr/share/groovy/lib/ivy.jar!/" />
+      <root url="jar:///usr/share/groovy/lib/asm.jar!/" />
+      <root url="jar:///usr/share/groovy/lib/servlet-api.jar!/" />
+      <root url="jar:///usr/share/groovy/lib/ant-launcher.jar!/" />
+      <root url="jar:///usr/share/groovy/lib/groovy-groovydoc.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
