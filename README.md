@@ -1,10 +1,6 @@
 # jenkins-shared-library
 Centralized Jenkins Shared Library providing reusable CI/CD pipeline components for Spring Boot microservices, including build automation, testing, code quality analysis, Docker image creation, security scanning, and Kubernetes deployment.
 
-# Jenkins Shared Library
-
-This repository contains reusable Jenkins pipeline components used across the Digital Banking Platform microservices ecosystem.
-
 ## Features
 
 - Gradle Build Automation
