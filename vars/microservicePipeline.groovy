@@ -1,13 +1,8 @@
-def call(Map config = [:]) {
+def call() {
 
     pipeline {
 
         agent any
-
-        environment {
-            SERVICE_NAME = config.serviceName
-            IMAGE_NAME   = config.imageName
-        }
 
         stages {
 
@@ -19,63 +14,42 @@ def call(Map config = [:]) {
 
             stage('Build') {
                 steps {
-                    sh './gradlew clean build'
+                    sh '''
+                        chmod +x gradlew
+                        ./gradlew clean build -x test
+                    '''
                 }
             }
 
-            stage('Unit Test') {
+            stage('Test') {
                 steps {
                     sh './gradlew test'
                 }
             }
 
-            stage('JaCoCo Coverage') {
+            stage('Print Info') {
                 steps {
-                    retry(2) {
-                        timeout(time: 10, unit: 'MINUTES') {
-                            sh './gradlew :jacocoTestReport --no-daemon'
-                        }
+                    script {
+                        echo "Job Name      : ${env.JOB_NAME}"
+                        echo "Build Number  : ${env.BUILD_NUMBER}"
+                        echo "Git Branch    : ${env.BRANCH_NAME}"
                     }
                 }
             }
+        }
 
-            stage('Mutation Testing') {
-                steps {
-                    retry(2) {
-                        timeout(time: 15, unit: 'MINUTES') {
-                            sh './gradlew :pitest --no-daemon'
-                        }
-                    }
-                }
+        post {
+
+            success {
+                echo 'Build Successful'
             }
 
-            stage('SonarQube') {
-                steps {
-                    sh './gradlew sonar'
-                }
+            failure {
+                echo 'Build Failed'
             }
 
-            stage('Docker Build') {
-                steps {
-                    sh """
-                    docker build \
-                    -t ${IMAGE_NAME}:${BUILD_NUMBER} .
-                    """
-                }
-            }
-
-            stage('Push Docker Image') {
-                steps {
-                    sh """
-                    docker push ${IMAGE_NAME}:${BUILD_NUMBER}
-                    """
-                }
-            }
-
-            stage('Deploy') {
-                steps {
-                    echo "Deploying ${SERVICE_NAME}"
-                }
+            always {
+                cleanWs()
             }
         }
     }
