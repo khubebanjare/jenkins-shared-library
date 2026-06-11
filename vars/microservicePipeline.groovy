@@ -47,34 +47,34 @@ def call() {
                     }
                 }
             }
-        }
 
-        stage('JaCoCo Coverage') {
-            steps {
-                retry(2) {
-                    timeout(time: 10, unit: 'MINUTES') {
-                        sh './gradlew :auth-service:jacocoTestReport --no-daemon'
+            stage('JaCoCo Coverage') {
+                steps {
+                    retry(2) {
+                        timeout(time: 10, unit: 'MINUTES') {
+                            sh './gradlew :auth-service:jacocoTestReport --no-daemon'
+                        }
                     }
                 }
             }
-        }
 
-        stage('Mutation Testing') {
-            steps {
-                retry(2) {
-                    timeout(time: 15, unit: 'MINUTES') {
-                        sh './gradlew :auth-service:pitest --no-daemon'
+            stage('Mutation Testing') {
+                steps {
+                    retry(2) {
+                        timeout(time: 15, unit: 'MINUTES') {
+                            sh './gradlew :auth-service:pitest --no-daemon'
+                        }
                     }
                 }
             }
-        }
 
-        stage('SonarQube Analysis') {
-            steps {
-                retry(2) {
-                    timeout(time: 10, unit: 'MINUTES') {
-                        withSonarQubeEnv('SonarQube') {
-                            sh './gradlew :auth-service:sonar --no-daemon'
+            stage('SonarQube Analysis') {
+                steps {
+                    retry(2) {
+                        timeout(time: 10, unit: 'MINUTES') {
+                            withSonarQubeEnv('SonarQube') {
+                                sh './gradlew :auth-service:sonar --no-daemon'
+                            }
                         }
                     }
                 }
