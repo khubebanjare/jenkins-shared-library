@@ -6,6 +6,23 @@ def call() {
 
         stages {
 
+            stage('Initialize') {
+                steps {
+                    script {
+
+                        env.SERVICE_NAME = env.JOB_NAME.replace('-pipeline', '')
+                        env.IMAGE_NAME = "khubebanjare/${env.SERVICE_NAME}"
+
+                        echo "================================="
+                        echo "JOB_NAME      = ${env.JOB_NAME}"
+                        echo "SERVICE_NAME  = ${env.SERVICE_NAME}"
+                        echo "IMAGE_NAME    = ${env.IMAGE_NAME}"
+                        echo "BRANCH_NAME   = ${env.BRANCH_NAME}"
+                        echo "================================="
+                    }
+                }
+            }
+
             stage('Checkout') {
                 steps {
                     checkout scm
@@ -14,38 +31,31 @@ def call() {
 
             stage('Build') {
                 steps {
-                    sh '''
-                        chmod +x gradlew
-                        ./gradlew clean build -x test
-                    '''
+                    dir(env.SERVICE_NAME) {
+                        sh '''
+                            chmod +x gradlew
+                            ./gradlew clean build
+                        '''
+                    }
                 }
             }
 
             stage('Test') {
                 steps {
-                    sh './gradlew test'
-                }
-            }
-
-            stage('Print Info') {
-                steps {
-                    script {
-                        echo "Job Name      : ${env.JOB_NAME}"
-                        echo "Build Number  : ${env.BUILD_NUMBER}"
-                        echo "Git Branch    : ${env.BRANCH_NAME}"
+                    dir(env.SERVICE_NAME) {
+                        sh './gradlew test'
                     }
                 }
             }
         }
 
         post {
-
             success {
-                echo 'Build Successful'
+                echo 'Pipeline completed successfully'
             }
 
             failure {
-                echo 'Build Failed'
+                echo 'Pipeline failed'
             }
 
             always {
